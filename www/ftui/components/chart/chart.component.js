@@ -51,7 +51,7 @@ export class FtuiChart extends FtuiElement {
                 if (resLabel && values && values.length) {
                   resLabel = resLabel.replace(/\$min/g, Math.min(...values));
                   resLabel = resLabel.replace(/\$max/g, Math.max(...values));
-                  resLabel = resLabel.replace(/\$sum/g, values.reduce((a, b) => a + b));;
+                  resLabel = resLabel.replace(/\$sum/g, values.reduce((a, b) => a + b));
                   resLabel = resLabel.replace(/\$avg/g, values.reduce((a, b) => a + b) / values.length);
                   resLabel = resLabel.replace(/\$last/g, values[values.length - 1]);
                 }
@@ -76,6 +76,7 @@ export class FtuiChart extends FtuiElement {
           x: {
             display: !this.noscale && !this.noX,
             type: 'time',
+            stacked: this.stackedX,
             time: {
               parser: 'yyyy-MM-dd_HH:mm:ss',
               displayFormats: { millisecond: 'HH:mm:ss.SSS', second: 'HH:mm:ss', minute: 'HH:mm', hour: 'HH:mm', day: 'd. MMM', month: 'MMMM' },
@@ -201,6 +202,7 @@ export class FtuiChart extends FtuiElement {
       noX: false,
       yUnit: '',
       y1Unit: '',
+      stackedX: false,
       stackedY: false,
       stackedY1: false,
     };
